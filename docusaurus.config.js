@@ -10,8 +10,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "My Site",
-  tagline: "Dinosaurs are cool",
+  title: "Ember to React cheat sheet",
+  tagline: "Ember is cool but React is where we're going.",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -76,9 +76,9 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "My Site",
+        title: "Ember to React cheat sheet",
         logo: {
-          alt: "My Site Logo",
+          alt: "Ember to React cheat sheet Logo",
           src: "img/logo.svg",
         },
         items: [
