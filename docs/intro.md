@@ -2,46 +2,97 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# How?
 
-Let's discover **Docusaurus in less than 5 minutes**.
+This app is designed to provide practical examples for migrating from Ember.js to React. Here’s how you can effectively navigate and utilize the examples provided within the app:
 
-## Getting Started
+## Navigation Overview
 
-Get started by **creating a new site**.
+1. **Main Menu or Sidebar**: 
+   - Use the sidebar to browse the categorized examples.
+   - Categories might include **Fragments**, **Data attributes**, or **State**.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+2. **Search Functionality** (upcoming): 
+   - Use the search bar to quickly locate specific examples by keywords, such as "state".
 
-### What you'll need
+---
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+## Types of Examples and How to Use Them
 
-## Generate a new site
+### Component Migrations
+- **Where to Find**: Look for sections titled "Component Examples" or similar.
+- **How to Use**:
+  - Explore examples of individual components like buttons, modals, or dropdowns.
+  - Compare the Ember.js implementation with the React version to understand key differences.
 
-Generate a new Docusaurus site using the **classic template**.
 
-The classic template will automatically be added to your project after you run the command:
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+---
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+## Features to Enhance Learning
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+### Side-by-Side Comparisons
+- Look for features that show Ember.js code alongside its React counterpart.
+- Use these comparisons to understand the translation of logic, syntax, and architecture.
 
-## Start your site
+---
 
-Run the development server:
+## Tips for Efficient Browsing
 
-```bash
-cd my-website
-npm run start
-```
+1. **Start with Simple Examples**: Begin with basic component migrations to build confidence before tackling complex features.
+2. **Bookmark Useful Examples**: Mark examples that align closely with your application’s requirements.
+3. **Experiment with Code**: Use interactive features to tweak the examples and see how changes affect behavior.
+4. **Document Insights**: Take notes on patterns and techniques that you find useful for your migration process.
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+By exploring the examples systematically and leveraging the app’s features, you can gain a clear understanding of how to transition from Ember.js to React effectively.
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+## How to Contribute
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+This app is designed to provide practical examples for migrating from Ember.js to React, and contributions from the community are vital to keeping the examples relevant, accurate, and helpful. Here’s how you can contribute:
+
+## Editing Existing Content
+
+1. **Navigate to the Example**:
+   - Use the sidebar to locate the example or section you want to update.
+
+2. **Click the Edit Button**:
+   - Each example or documentation page includes an **Edit** button (usually located at the top or bottom of the page).
+   - Clicking this button will take you directly to the corresponding file in the repository.
+
+3. **Make Your Changes**:
+   - Edit the file using GitHub's built-in editor or clone the repository to work locally.
+   - Ensure your edits improve clarity, accuracy, or functionality.
+
+4. **Submit a Pull Request**:
+   - After making your changes, submit a pull request (PR) with a clear description of what you’ve updated.
+   - Include a brief rationale for your changes to help maintainers review them efficiently.
+
+---
+
+## Adding New Examples
+
+1. **Identify Gaps**:
+   - Look for areas where new examples might help other developers, such as missing patterns, advanced use cases, or commonly requested features.
+
+2. **Follow the Contribution Guidelines**:
+   - Ensure that your example adheres to the app’s style and organizational structure.
+   - Include side-by-side comparisons of Ember.js and React implementations whenever possible.
+
+3. **Submit Your Example**:
+   - Add the new example to the appropriate category or create a new section if necessary.
+   - Test your example thoroughly before submitting a pull request.
+
+---
+
+## Best Practices for Contributions
+
+1. **Keep It Simple**:
+   - Examples should focus on a single concept or feature for clarity.
+
+2. **Write Clear Descriptions**:
+   - Provide a brief explanation of the example and why it’s useful for migration.
+
+3. **Test Before You Submit**:
+   - Verify that your code runs correctly and aligns with the app’s goals.
+
+By contributing your expertise and examples, you can help create a valuable resource for developers migrating from Ember.js to React!

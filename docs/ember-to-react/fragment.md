@@ -13,7 +13,7 @@ Text outside
 
 ## React 
 
-React components can only return one root node. A Fragment is a lightweight wrapper that lets you group multiple elements without adding extra nodes to the DOM. This is particularly useful when a component needs to return multiple sibling elements.
+React components can only return one root node ([doc](https://react.dev/reference/react/Fragment)). A Fragment is a lightweight wrapper that lets you group multiple elements without adding extra nodes to the DOM. This is particularly useful when a component needs to return multiple sibling elements.
 
 
 ```jsx
@@ -26,3 +26,5 @@ const TextContainer = () => (
 
 export default TextContainer;
 ```
+
+
