@@ -6,7 +6,7 @@ In Ember.js, you can return multiple elements naturally because Ember templates 
 
 ```hbs
 Text outside
-<p data-test-text-inside>Text inside</p>
+<p>Text inside</p>
 ```
 
 ## React 
@@ -18,7 +18,7 @@ React components can only return one root node. A Fragment is a lightweight wrap
 const TextContainer = () => (
   <>
     Text outside
-    <p data-test-text-inside>Text inside</p>
+    <p>Text inside</p>
   </>
 );
 
