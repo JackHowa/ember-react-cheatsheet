@@ -8,6 +8,8 @@ The provided examples showcase how inline logic works in Ember's Handlebars temp
 
 In Ember, the `{{if}}` helper allows you to define conditional logic inline within a template. This helper evaluates a condition and returns one of two values based on whether the condition is true or false. The reusability depends on Ember components or helpers with `{{if}}`.
 
+The `@isTrue` signfifies the prop that Ember uses.
+
 ```handlebars
 <img
   alt={{if @isTrue 'True icon' 'False icon'}}
@@ -22,6 +24,9 @@ In Ember, the `{{if}}` helper allows you to define conditional logic inline with
 ## React
 
 React uses JavaScript expressions for inline logic, commonly leveraging the ternary operator (condition ? valueIfTrue : valueIfFalse) within JSX. Inline logic is written in plain JavaScript, leveraging its full power and flexibility.
+
+`isTrue` is destructured from props, the common name for React props.
+
 
 ```jsx
 const TruthyIcon = (props) => {
