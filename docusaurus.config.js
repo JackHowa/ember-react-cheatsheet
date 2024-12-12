@@ -86,7 +86,14 @@ const config = {
             type: "docSidebar",
             sidebarId: "tutorialSidebar",
             position: "left",
-            label: "Tutorial",
+            label: "Help",
+          },
+          {
+            type: "docSidebar",
+            sidebarId: "tutorialSidebar",
+            position: "left",
+            label: "Examples",
+            href: "/docs/category/examples",
           },
           {
             href: "https://github.com/JackHowa/ember-react-cheat-sheet",
@@ -102,12 +109,15 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Tutorial",
+                label: "Help",
                 to: "/docs/intro",
+              },
+              {
+                label: "Examples",
+                href: "/docs/category/examples",
               },
             ],
           },
-
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Expel`,
       },
