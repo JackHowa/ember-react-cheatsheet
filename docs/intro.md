@@ -8,9 +8,9 @@ This app is designed to provide practical examples for migrating from Ember.js t
 
 ## Navigation Overview
 
-1. **Main Menu or Sidebar**: 
+1. **Examples**: 
    - Use the sidebar to browse the categorized examples.
-   - Categories might include **Fragments**, **Data attributes**, or **State**.
+   - Categories might include **Fragments**, **Data attributes**, or **State** after you click **Examples**.
 
 2. **Search Functionality** (upcoming): 
    - Use the search bar to quickly locate specific examples by keywords, such as "state".
@@ -24,7 +24,6 @@ This app is designed to provide practical examples for migrating from Ember.js t
 - **How to Use**:
   - Explore examples of individual components like buttons, modals, or dropdowns.
   - Compare the Ember.js implementation with the React version to understand key differences.
-
 
 
 ---
