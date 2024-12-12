@@ -23,7 +23,10 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "jackhowa", // your GitHub org/user name.
-  projectName: "Ember To React", // your repo name.
+  projectName: "ember-react-cheat-sheet", // your repo name.
+
+  // via https://docusaurus.io/docs/deployment#docusaurusconfigjs-settings
+  trailingSlash: false,
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
