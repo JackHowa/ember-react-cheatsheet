@@ -4,7 +4,7 @@ Fragments represent smaller, reusable parts of a user interface within an applic
 
 ## Ember 
 
-In Ember.js, you can return multiple elements naturally because Ember templates allow this without the explicit need for a wrapper component.
+In Ember, you can return multiple elements naturally because Ember templates allow this without the explicit need for a wrapper component.
 
 ```hbs
 Text outside

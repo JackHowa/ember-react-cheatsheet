@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # How?
 
-This app is designed to provide practical examples for migrating from Ember.js to React. Here’s how you can effectively navigate and utilize the examples provided within the app:
+This app is designed to provide practical examples for migrating from Ember to React. Here’s how you can effectively navigate and utilize the examples provided within the app:
 
 ## Navigation Overview
 
@@ -23,7 +23,7 @@ This app is designed to provide practical examples for migrating from Ember.js t
 - **Where to Find**: Look for sections titled "Component Examples" or similar.
 - **How to Use**:
   - Explore examples of individual components like buttons, modals, or dropdowns.
-  - Compare the Ember.js implementation with the React version to understand key differences.
+  - Compare the Ember implementation with the React version to understand key differences.
 
 
 ---
@@ -31,7 +31,7 @@ This app is designed to provide practical examples for migrating from Ember.js t
 ## Features to Enhance Learning
 
 ### Side-by-Side Comparisons
-- Look for features that show Ember.js code alongside its React counterpart.
+- Look for features that show Ember code alongside its React counterpart.
 - Use these comparisons to understand the translation of logic, syntax, and architecture.
 
 ---
@@ -43,11 +43,11 @@ This app is designed to provide practical examples for migrating from Ember.js t
 3. **Experiment with Code**: Use interactive features to tweak the examples and see how changes affect behavior.
 4. **Document Insights**: Take notes on patterns and techniques that you find useful for your migration process.
 
-By exploring the examples systematically and leveraging the app’s features, you can gain a clear understanding of how to transition from Ember.js to React effectively.
+By exploring the examples systematically and leveraging the app’s features, you can gain a clear understanding of how to transition from Ember to React effectively.
 
 ## How to Contribute
 
-This app is designed to provide practical examples for migrating from Ember.js to React, and contributions from the community are vital to keeping the examples relevant, accurate, and helpful. Here’s how you can contribute:
+This app is designed to provide practical examples for migrating from Ember to React, and contributions from the community are vital to keeping the examples relevant, accurate, and helpful. Here’s how you can contribute:
 
 ## Editing Existing Content
 
@@ -75,7 +75,7 @@ This app is designed to provide practical examples for migrating from Ember.js t
 
 2. **Follow the Contribution Guidelines**:
    - Ensure that your example adheres to the app’s style and organizational structure.
-   - Include side-by-side comparisons of Ember.js and React implementations whenever possible.
+   - Include side-by-side comparisons of Ember and React implementations whenever possible.
 
 3. **Submit Your Example**:
    - Add the new example to the appropriate category or create a new section if necessary.
@@ -94,4 +94,4 @@ This app is designed to provide practical examples for migrating from Ember.js t
 3. **Test Before You Submit**:
    - Verify that your code runs correctly and aligns with the app’s goals.
 
-By contributing your expertise and examples, you can help create a valuable resource for developers migrating from Ember.js to React!
+By contributing your expertise and examples, you can help create a valuable resource for developers migrating from Ember to React!

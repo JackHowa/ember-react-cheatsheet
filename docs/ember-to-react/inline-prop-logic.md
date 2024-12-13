@@ -10,7 +10,7 @@ In Ember, the `{{if}}` helper allows you to define conditional logic inline with
 
 The `@isTrue` signfifies the prop that Ember uses.
 
-```handlebars
+```hbs
 <img
   alt={{if @isTrue 'True icon' 'False icon'}}
   src={{if
