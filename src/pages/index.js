@@ -33,8 +33,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Ember to React migration exmaples">
+      title={siteConfig.title}
+      description="Ember to React">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
