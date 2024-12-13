@@ -2,7 +2,7 @@
 
 ## Ember 
 
-`{{yield}}` is used to render the content passed to a component from its parent.
+`{{yield}}` is used to render the content passed to a component from its parent ([doc](https://guides.emberjs.com/v3.24.0/components/block-content/)).
 
 
 ```hbs title="/components/text.hbs"
