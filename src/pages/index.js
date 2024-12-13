@@ -19,9 +19,9 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/intro"
+            to="/docs/examples"
           >
-            See how to browse example migrations 🔥 ➡️ ⚛️
+            Browse example migrations 🔥 ➡️ ⚛️
           </Link>
         </div>
       </div>
