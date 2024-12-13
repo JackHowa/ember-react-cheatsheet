@@ -11,7 +11,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Ember to React cheat sheet",
-  tagline: "Ember is cool but React is where we're going.",
+  tagline: "Ember is cool but React is where devs are going.",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
