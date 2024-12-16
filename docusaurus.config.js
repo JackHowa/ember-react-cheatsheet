@@ -157,7 +157,7 @@ const config = {
               },
               {
                 label: "Frontend Masters React",
-                href: "https://frontendmasters.com/courses/?q=react&c=courses&dg=1",
+                href: "https://frontendmasters.com/learn/react/",
               },
               {
                 label: "Ember docs (3.24)",
