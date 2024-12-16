@@ -1,5 +1,7 @@
 # Children 
 
+Managing children is a core concept that allows developers to compose flexible and reusable components. "Children" generally refer to the content or other components nested inside a parent component. Composability empowers developers to build modular interfaces.
+
 ## Ember 
 
 `{{yield}}` is used to render the content passed to a component from its parent ([doc](https://guides.emberjs.com/v3.24.0/components/block-content/)).
