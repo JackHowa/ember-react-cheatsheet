@@ -20,7 +20,7 @@ For complex conditions, you can use the Ember addon Ember Truth Helpers like `eq
 
 ## React
 
-Conditional rendering is done directly within JSX, which allows you to use JavaScript for dynamic logic. This includes if statements, ternary operators, and logical operators. 
+Conditional rendering is done directly within JSX, which allows you to use JavaScript for dynamic logic. This includes if statements, ternary operators, and logical operators ([docs](https://react.dev/learn/conditional-rendering)).
 
 JSX combines logic and UI, keeping the rendering logic in the component file.
 
