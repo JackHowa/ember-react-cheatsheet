@@ -34,6 +34,8 @@ const config = {
     locales: ["en"],
   },
 
+  themes: ["@docusaurus/theme-live-codeblock"],
+
   presets: [
     [
       "classic",
@@ -155,7 +157,7 @@ const config = {
               },
               {
                 label: "Frontend Masters React",
-                href: "https://frontendmasters.com/courses/?q=react&c=courses&dg=1"
+                href: "https://frontendmasters.com/courses/?q=react&c=courses&dg=1",
               },
               {
                 label: "Ember docs (3.24)",
