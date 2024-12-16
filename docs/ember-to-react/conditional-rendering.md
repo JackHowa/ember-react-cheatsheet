@@ -1,12 +1,12 @@
-# Conditional Rendering
+# Conditional rendering
 
 Conditional rendering enables showing different UI elements or components based on specific conditions. This can change the whole render of a component or part of it.
 
 ## Ember 
 
-Logic is expressed declaratively with Handlebars helpers like `if` and `else` are used to manage conditions directly in the markup. 
+Logic is expressed declaratively with Handlebars helpers like `if` and `else` are used to manage conditions directly in the markup ([docs](https://handlebarsjs.com/guide/builtin-helpers.html)). 
 
-For complex conditions, you can use helpers like `eq` or computed properties in the component's JavaScript file.
+For complex conditions, you can use the Ember addon Ember Truth Helpers like `eq` or computed properties in the component's JavaScript file ([docs](https://github.com/jmurphyau/ember-truth-helpers?tab=readme-ov-file#usage)).
 
 ```hbs
 {{#if @myObject.something}}

@@ -1,4 +1,4 @@
-# Class Name
+# Class name
 
 Ember uses `class`, while React uses `className` for defining CSS classes. CSS classes are used for associating styles with elements. Libraries like Material use classes to define icons, as seen in code examples.
 
