@@ -12,7 +12,7 @@ The `class` attribute is used to define static CSS classes directly in the Handl
 
 ## React
 
-`className` is used instead of `class` to define CSS classes. This is because `class` is a [reserved word](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#reserved_words) in JavaScript so JSX has to avoid it for transpilation (more info)[https://github.com/facebook/react/issues/13525#issuecomment-417818906]. 
+`className` is used instead of `class` to define CSS classes. This is because `class` is a [reserved word](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#reserved_words) in JavaScript so JSX has to avoid it for transpilation [more info](https://github.com/facebook/react/issues/13525#issuecomment-417818906). 
 
 
 ```jsx
