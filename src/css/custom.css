@@ -28,3 +28,8 @@
   --ifm-color-primary-lightest: #dfc5fa;
   --docusaurus-highlighted-code-line-bg: rgba(145, 102, 204, 0.3);
 }
+
+/* used in code example */
+.theme-text {
+  color: var(--ifm-color-primary);
+}
