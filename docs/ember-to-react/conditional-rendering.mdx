@@ -24,7 +24,7 @@ Conditional rendering is done directly within JSX, which allows you to use JavaS
 
 JSX combines logic and UI, keeping the rendering logic in the component file.
 
-```jsx
+```jsx live noInline
 const ComplexLogic = (props) => {
   const { myObject } = props;
 
@@ -37,5 +37,11 @@ const ComplexLogic = (props) => {
   }
 };
 
-export default ComplexLogic;
+const TEST_OBJECT = {
+  defaultThing: 'Default render', // required for default third condition fallback
+  // thatThing: 'That Thing' // to trigger second condition
+  // something: 'just truthy' // to trigger first condition
+}
+
+render(<ComplexLogic myObject={TEST_OBJECT} />)
 ```
