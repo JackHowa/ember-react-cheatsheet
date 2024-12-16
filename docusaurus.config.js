@@ -146,6 +146,23 @@ const config = {
               },
             ],
           },
+          {
+            title: "General Resources",
+            items: [
+              {
+                label: "React docs",
+                href: "https://react.dev/learn",
+              },
+              {
+                label: "Frontend Masters React",
+                href: "https://frontendmasters.com/courses/?q=react&c=courses&dg=1"
+              },
+              {
+                label: "Ember docs (3.24)",
+                href: "https://guides.emberjs.com/v3.24.0/",
+              },
+            ],
+          },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Expel`,
       },
