@@ -133,7 +133,9 @@ const config = {
         ],
       },
       footer: {
-        style: "dark",
+        // commented out to override
+        // https://github.com/facebook/docusaurus/issues/2692#issuecomment-2101718777
+        // style: "dark",
         links: [
           {
             title: "Docs",
@@ -162,6 +164,19 @@ const config = {
               {
                 label: "Ember docs (3.24)",
                 href: "https://guides.emberjs.com/v3.24.0/",
+              },
+            ],
+          },
+          {
+            title: "AI Migration ✨",
+            items: [
+              {
+                label: "React Chicago presentation",
+                href: "https://www.youtube.com/watch?v=JPtng2eFAZc",
+              },
+              {
+                label: "Demo Repo",
+                href: "https://github.com/JackHowa/ai-react-ember",
               },
             ],
           },
