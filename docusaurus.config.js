@@ -169,10 +169,10 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Expel`,
       },
       prism: {
-        theme: prismThemes.github,
+        theme: prismThemes.nightOwlLight,
         // see fix https://github.com/shipshapecode/ember-prism/issues/29
         additionalLanguages: ["handlebars", "markup-templating"],
-        darkTheme: prismThemes.dracula,
+        darkTheme: prismThemes.nightOwl,
       },
     }),
 };
