@@ -1,0 +1,79 @@
+# Input validation
+
+In both Ember and React, we can make the user input be required and match a regex pattern.
+
+The provided examples showcase how to make an input be required and match regex patterns in Ember's Handlebars templates and React's JSX.
+
+## Ember 
+
+In Ember, the validator function set for the changeset controls which input forms and how these input fields are validated.
+- [Changeset](https://www.npmjs.com/package/ember-changeset/v/0.10.4)
+- [Changeset Validations](https://github.com/adopted-ember-addons/ember-changeset-validations)
+- [BsForm](https://www.ember-bootstrap.com/components/forms)
+
+component.js
+```js
+import Changeset from 'ember-changeset';
+import lookupValidator from 'ember-changeset-validations';
+import {
+  validatePresence,
+  validateFormat
+} from 'ember-changeset-validations/validators';
+
+validator = {
+  name: [
+    validatePresence({
+      presence: true,
+      message: 'Name required'
+    }),
+    validateFormat({
+      regex: /^[A-Z0-9a-z]+$/,
+      message: 'Name contain only letters or numbers'
+    })
+  ],
+}
+
+// create the changeset
+changeset = new Changeset(
+  { name: '' },
+  lookupValidator(this.validator),
+  this.validator
+)
+```
+template.hbs:
+```hbs
+<BsForm @model={{this.application.changeset}} as |form|>
+  <form.element @label="Name" @property="name" />
+</BsForm>
+```
+
+## React
+
+In this code snippet, we are utilizing the following components:
+- [EDS Form](https://storage.googleapis.com/staging-public-storybook-design-system/index.html?path=/docs/eds-form--docs) 
+- [EDS Input](https://storage.googleapis.com/staging-public-storybook-design-system/index.html?path=/docs/eds-input--docs)
+
+```jsx
+import { Form, Input } from 'expel-design-system';
+
+const Form = (props) => {
+  return (
+    <Form id="form">
+      <Input
+        key="name"
+        labelText="Name"
+        name="name"
+        pattern={new RegExp('/^[A-Z0-9a-z]+$/')}
+        required
+        type="text"
+        validationMessageOverride={{
+          required: 'Name required',
+          pattern: 'Name contain only letters or numbers'
+        }}
+      />
+    </Form>
+  );
+};
+export default Form;
+
+```
