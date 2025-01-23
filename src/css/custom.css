@@ -39,7 +39,7 @@
   span.string, span.attr-name {
     color: #4470cb !important;
   }
-  span.keyword, span.property {
+  span.keyword, span.property, span.operator {
     color: #0a8084 !important;
   }
   span.comment {
