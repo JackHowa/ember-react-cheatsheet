@@ -14,6 +14,9 @@
   --ifm-color-primary-lighter: #9d78cd;
   --ifm-color-primary-lightest: #ab86d9;
   --docusaurus-highlighted-code-line-bg: rgba(145, 102, 204, 0.1);
+
+  /* ensure that code is just as readable */
+  --ifm-code-font-size: 100%;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -28,7 +31,27 @@
   --docusaurus-highlighted-code-line-bg: rgba(145, 102, 204, 0.3);
 }
 
+[data-theme='light'] {
+  /* override the light theme night owl to make sure that the light mode is readable */
+  span.variable, span.boolean {
+    color: #af5a58 !important;
+  }
+  span.string, span.attr-name {
+    color: #4470cb !important;
+  }
+  span.keyword, span.property {
+    color: #0a8084 !important;
+  }
+  span.comment {
+    color: #6e7380 !important;
+  }
+}
+
 /* used in code example */
 .theme-text {
   color: var(--ifm-color-primary);
+}
+
+code {
+  font-size: var(--ifm-code-font-size) !important;
 }
