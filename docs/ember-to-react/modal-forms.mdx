@@ -1,0 +1,160 @@
+# Modal form
+
+In both Ember and React, we can create a form within a modal.
+
+## Ember 
+
+In Ember, we utilize the following components:
+- [Ex::Modal](https://github.com/expel-io/ember-ui/blob/develop/app/components/ex/modal/template.hbs) relies on the [BsModal](https://www.ember-bootstrap.com/components/modal) component
+- [BsForm](https://www.ember-bootstrap.com/components/forms)
+- [Changeset](https://www.npmjs.com/package/ember-changeset/v/0.10.4)
+- [Changeset Validations](https://github.com/adopted-ember-addons/ember-changeset-validations)
+
+The `this.isModalVisible` is a boolean that is set whenever modal is opened/closed.
+```js
+import Changeset from 'ember-changeset';
+import lookupValidator from 'ember-changeset-validations';
+import { validatePresence } from 'ember-changeset-validations/validators';
+
+@tracked isModalVisible = false;
+
+validator = {
+  name: [validatePresence(true)],
+}
+
+// initialize the modal on open
+@restartableTask
+loadModalData = function* () {
+  set(
+    this,
+    'changeset',
+    new Changeset(
+      { name: '' },
+      lookupValidator(this.validator),
+      this.validator
+    )
+  );
+};
+
+@task
+handleSubmit = function* () {
+  // submit stuff
+  // to retrieve user input: this.changeset.get('name')
+  this.isModalVisible = false;
+};
+```
+
+```hbs
+<Ex::Modal
+  @open={{this.isModalVisible}}
+  @onHide={{set this.isModalVisible false}}
+  @onShow={{perform this.loadModalData}}
+  as |modal|
+>
+  <modal.header>
+    <h3>Header</h3>
+  </modal.header>
+
+  <modal.body>
+    <BsForm
+      @model={{this.changeset}}
+      @onSubmit={{perform this.handleSubmit}}
+      as |form|
+    >
+      <form.element @label="Name" @property="name" />
+    </BsForm>
+  </modal.body>
+
+  <modal.footer>
+    <BsButton
+      @defaultText="Cancel"
+      @type="secondary"
+      @onClick={{modal.close}}
+    />
+    <BsButton
+      disabled={{this.handleSubmit.isRunning}}
+      @defaultText="Save"
+      @type="primary"
+      @onClick={{modal.submit}}
+    />
+  </modal.footer>
+</Ex::Modal>
+```
+
+## React
+
+In this code snippet, we are utilizing the following components:
+- [EDS Form](https://storage.googleapis.com/staging-public-storybook-design-system/index.html?path=/docs/eds-form--docs) 
+- [EDS Input](https://storage.googleapis.com/staging-public-storybook-design-system/index.html?path=/docs/eds-input--docs)
+- [React Modal Component](https://github.com/expel-io/ember-ui/blob/develop/app/components/react-modal/index.jsx)
+
+```jsx
+import { useState, useEffect, useCallback } from 'react';
+import { Button, Form, Input, ReactHookForm } from 'expel-design-system';
+import ReactModal from 'expel/components/react-modal';
+
+const ModalForm = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSubmit = (userInput) => {
+    // userInput is an object of form data. ex: { name: 'bill' }
+    console.log(userInput.name);
+  };
+
+  const handleClose = useCallback(() => {
+    setIsModalOpen(false);
+  }, [setIsModalOpen]);
+
+  const FormInput = ({ isOpen }) => {
+    const methods = ReactHookForm.useFormContext() || {};
+    const { reset, formState } = methods;
+
+    //reset the inputs if closed or submitted
+    useEffect(() => {
+      if (formState?.isSubmitSuccessful || !isOpen) {
+        reset();
+      }
+    }, [isOpen, formState?.isSubmitSuccessful, reset]);
+
+    return (
+      <Input key="name" labelText="Name" name="name" required type="text" />
+    );
+  };
+
+  return (
+    <>
+      <Button
+        buttonType="secondary"
+        data-testid="cancel-btn"
+        onClick={() => setIsModalOpen(true)}
+      >
+        Open
+      </Button>
+
+      <ReactModal className="modal" open={isModalOpen} onHide={handleClose}>
+        <ReactModal.Header data-testid="modal-header">
+          <h3 className="modal-title">Header</h3>
+        </ReactModal.Header>
+
+        <ReactModal.Body>
+          <Form id="form" onSubmitHandler={handleSubmit}>
+            <FormInput isOpen={isModalOpen} />
+          </Form>
+        </ReactModal.Body>
+
+        <ReactModal.Footer>
+          <Button buttonType="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button buttonType="primary" form="form" type="submit">
+            Save
+          </Button>
+        </ReactModal.Footer>
+      </ReactModal>
+    </>
+  );
+};
+
+export default ModalForm;
+
+```
