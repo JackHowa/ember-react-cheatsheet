@@ -11,8 +11,7 @@ In Ember, the validator function set for the changeset controls which input form
 - [Changeset Validations](https://github.com/adopted-ember-addons/ember-changeset-validations)
 - [BsForm](https://www.ember-bootstrap.com/components/forms)
 
-component.js
-```js
+```js title="component.js" showLineNumbers
 import Changeset from 'ember-changeset';
 import lookupValidator from 'ember-changeset-validations';
 import {
@@ -40,8 +39,8 @@ changeset = new Changeset(
   this.validator
 )
 ```
-template.hbs:
-```hbs
+
+```hbs title="template.hbs"  showLineNumbers
 <BsForm @model={{this.application.changeset}} as |form|>
   <form.element @label="Name" @property="name" />
 </BsForm>
@@ -53,7 +52,7 @@ In this code snippet, we are utilizing the following components:
 - [EDS Form](https://storage.googleapis.com/staging-public-storybook-design-system/index.html?path=/docs/eds-form--docs) 
 - [EDS Input](https://storage.googleapis.com/staging-public-storybook-design-system/index.html?path=/docs/eds-input--docs)
 
-```jsx
+```jsx showLineNumbers
 import { Form, Input } from 'expel-design-system';
 
 const Form = (props) => {
@@ -75,5 +74,4 @@ const Form = (props) => {
   );
 };
 export default Form;
-
 ```

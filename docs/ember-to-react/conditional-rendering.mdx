@@ -8,7 +8,7 @@ Logic is expressed declaratively with Handlebars helpers like `if` and `else` ar
 
 For complex conditions, you can use the Ember addon Ember Truth Helpers like `eq` or computed properties in the component's JavaScript file ([docs](https://github.com/jmurphyau/ember-truth-helpers?tab=readme-ov-file#usage)).
 
-```hbs
+```hbs showLineNumbers
 {{#if @myObject.something}}
   <b>This Thing</b>
 {{else if (eq @myObject.thatThing 'That Thing')}}

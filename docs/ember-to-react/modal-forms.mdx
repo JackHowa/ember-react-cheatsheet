@@ -11,7 +11,7 @@ In Ember, we utilize the following components:
 - [Changeset Validations](https://github.com/adopted-ember-addons/ember-changeset-validations)
 
 The `this.isModalVisible` is a boolean that is set whenever modal is opened/closed.
-```js
+```js showLineNumbers
 import Changeset from 'ember-changeset';
 import lookupValidator from 'ember-changeset-validations';
 import { validatePresence } from 'ember-changeset-validations/validators';
@@ -44,7 +44,7 @@ handleSubmit = function* () {
 };
 ```
 
-```hbs
+```hbs showLineNumbers
 <Ex::Modal
   @open={{this.isModalVisible}}
   @onHide={{set this.isModalVisible false}}
@@ -88,7 +88,7 @@ In this code snippet, we are utilizing the following components:
 - [EDS Input](https://storage.googleapis.com/staging-public-storybook-design-system/index.html?path=/docs/eds-input--docs)
 - [React Modal Component](https://github.com/expel-io/ember-ui/blob/develop/app/components/react-modal/index.jsx)
 
-```jsx
+```jsx showLineNumbers
 import { useState, useEffect, useCallback } from 'react';
 import { Button, Form, Input, ReactHookForm } from 'expel-design-system';
 import ReactModal from 'expel/components/react-modal';
@@ -156,5 +156,4 @@ const ModalForm = () => {
 };
 
 export default ModalForm;
-
 ```
