@@ -6,13 +6,13 @@ Managing children is a core concept that allows developers to compose flexible a
 
 `{{yield}}` is used to render the content passed to a component from its parent ([doc](https://guides.emberjs.com/v3.24.0/components/block-content/)).
 
-```hbs title="/components/bolded-project-name.hbs"
+```hbs title="/components/bolded-project-name.hbs" showLineNumbers
 <b>
   Ember to React cheat sheet
 </b>
 ```
 
-```hbs title="/components/greeting.hbs"
+```hbs title="/components/greeting.hbs" showLineNumbers
 <p>
   Hello {{yield}}!!!
 </p>
@@ -22,7 +22,7 @@ Managing children is a core concept that allows developers to compose flexible a
 
 `children` is accessed from `props` to render nested content within a component ([doc](https://react.dev/learn/passing-props-to-a-component#passing-jsx-as-children)). Child components must be imported in React.
 
-```jsx live noInline
+```jsx live noInline 
 const BoldedProjectName = () => <b>Ember to React cheat sheet</b>
 
 const Greeting = (props) => {
