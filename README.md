@@ -1,6 +1,6 @@
 # Ember to React docs
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator. Do not commit jfrog lockfiles as the build in netlify is not ready for that authentication. 
 
 ### Installation
 
