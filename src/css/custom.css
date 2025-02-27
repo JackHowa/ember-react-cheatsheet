@@ -32,6 +32,13 @@
 }
 
 [data-theme='light'] {
+  .DocSearch {
+    /* in v3.7 you can use the infina colors that have accessible values
+    https://docusaurus.io/docs/search#styling-your-algolia-search */
+    /* ensure that docusaurus placeholder text is readable in light mode only */
+    --docsearch-muted-color: #656b75;
+  }
+
   /* override the light theme night owl to make sure that the light mode is readable */
   span.variable, span.boolean {
     color: #af5a58 !important;
