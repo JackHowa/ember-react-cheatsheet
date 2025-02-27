@@ -32,7 +32,7 @@
 }
 
 [data-theme='light'] {
-  .DocSearch-Button {
+  .DocSearch {
     /* ensure that docusaurus placeholder text is readable in light mode only */
     --docsearch-muted-color: #656b75 ;
   }
