@@ -32,6 +32,11 @@
 }
 
 [data-theme='light'] {
+  .DocSearch-Button {
+    /* ensure that docusaurus placeholder text is readable in light mode only */
+    --docsearch-muted-color: #656b75 ;
+  }
+
   /* override the light theme night owl to make sure that the light mode is readable */
   span.variable, span.boolean {
     color: #af5a58 !important;
