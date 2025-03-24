@@ -4,8 +4,8 @@ In both Ember and React, we can create a form within a modal.
 
 ## Ember 
 
-In Ember, we utilize the following components:
-- [Ex::Modal](https://github.com/expel-io/ember-ui/blob/develop/app/components/ex/modal/template.hbs) relies on the [BsModal](https://www.ember-bootstrap.com/components/modal) component
+In Ember, the following components can be used
+- [BsModal](https://www.ember-bootstrap.com/components/modal) component
 - [BsForm](https://www.ember-bootstrap.com/components/forms)
 - [Changeset](https://www.npmjs.com/package/ember-changeset/v/0.10.4)
 - [Changeset Validations](https://github.com/adopted-ember-addons/ember-changeset-validations)
@@ -45,7 +45,7 @@ handleSubmit = function* () {
 ```
 
 ```hbs showLineNumbers
-<Ex::Modal
+<BsModal
   @open={{this.isModalVisible}}
   @onHide={{set this.isModalVisible false}}
   @onShow={{perform this.loadModalData}}
@@ -78,7 +78,7 @@ handleSubmit = function* () {
       @onClick={{modal.submit}}
     />
   </modal.footer>
-</Ex::Modal>
+</BsModal>
 ```
 
 ## React
