@@ -12,7 +12,7 @@ Please make sure you've followed all the steps below before submitting your PR:
 - [ ] Anonymized code as much as possible. Do not commit business critical code, like how a special feature works or a GUID.
 - [ ] Kept examples **simple** — don’t include unnecessary frameworks (like Bootstrap) if not part of the core example
 - [ ] Opened this PR 🎉
-- [ ] DMed @JackHowa (I can add you as a maintainer if you’re interested in helping during work hours!)
+- [ ] DMed or tagged @JackHowa (I can add you as a maintainer if you’re interested in helping during work hours!) 
 - [ ] Posted in the guild and celebrated! 🎊
 
 ---
