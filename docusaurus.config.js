@@ -4,7 +4,7 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import {themes as prismThemes} from 'prism-react-renderer';
+import { themes as prismThemes } from "prism-react-renderer";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -46,7 +46,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/JackHowa/ember-react-cheat-sheet/tree/main",
+            "https://github.com/JackHowa/ember-react-cheatsheet/tree/main",
         },
         // blog: {
         //   showReadingTime: true,
@@ -57,7 +57,7 @@ const config = {
         //   // Please change this to your repo.
         //   // Remove this to remove the "edit this page" links.
         //   editUrl:
-        //     "https://github.com/JackHowa/ember-react-cheat-sheet/tree/main/packages/create-docusaurus/templates/shared/",
+        //     "https://github.com/JackHowa/ember-react-cheatsheet/tree/main/packages/create-docusaurus/templates/shared/",
         //   // Useful options to enforce blogging best practices
         //   onInlineTags: "warn",
         //   onInlineAuthors: "warn",
@@ -126,7 +126,7 @@ const config = {
             href: "/docs/category/examples",
           },
           {
-            href: "https://github.com/JackHowa/ember-react-cheat-sheet",
+            href: "https://github.com/JackHowa/ember-react-cheatsheet",
             label: "GitHub",
             position: "right",
           },
