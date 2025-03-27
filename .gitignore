@@ -18,3 +18,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# this is for special use as it won't interfere with work npm
+package-lock.json
