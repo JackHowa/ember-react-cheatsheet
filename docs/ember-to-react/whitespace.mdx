@@ -1,5 +1,6 @@
 # Whitespace 
 
+In Ember's Handlebars, there's automatic whitespace added between tags by default. However, if you use the `~` in Handlebars, that will override and take up any whitespace ((doc)[https://handlebarsjs.com/guide/expressions.html#whitespace-control]). For better and for worse, React has no implied whitespace like this. So migrating the `~` will be easier. 
 
 ## Ember
 
@@ -22,3 +23,7 @@ const ImportantNews = () => (
 
 render(<ImportantNews  />)
 ```
+
+## Further note
+
+- HTML enties can also be used here `&nbsp;` (non-breaking space). However, if you use that syntax, try to stay consistent in the same file for using other entities for whitespace. https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unescaped-entities.md
