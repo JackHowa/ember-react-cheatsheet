@@ -103,7 +103,7 @@ const config = {
         // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
         insights: true,
       },
-      image: "img/social-card.jpg",
+      image: "img/social-card.png",
       navbar: {
         title: "Ember to React cheat sheet",
         logo: {
