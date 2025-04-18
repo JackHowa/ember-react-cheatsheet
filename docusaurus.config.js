@@ -103,13 +103,14 @@ const config = {
         // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
         insights: true,
       },
-      // Replace with your project's social card
-      image: "img/docusaurus-social-card.jpg",
+      image: "img/social-card.png",
       navbar: {
         title: "Ember to React cheat sheet",
         logo: {
-          alt: "Ember to React cheat sheet Logo",
+          alt: "", // purely decorative logo
           src: "img/logo.svg",
+          width: 32,
+          height: 32,
         },
         items: [
           {
