@@ -1,6 +1,8 @@
-# Ember to React docs
+# Ember to React cheat sheet
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator. Do not commit jfrog lockfiles as the build in netlify is not ready for that authentication. 
+This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator. Do not commit jfrog lockfiles as the build in netlify is not ready for that authentication.
+
+![](/static/img/social-card.png)
 
 ### Installation
 
@@ -24,7 +26,7 @@ $ npm build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-### Deploy 
+### Deploy
 
 Deployed to Netlify.
 
