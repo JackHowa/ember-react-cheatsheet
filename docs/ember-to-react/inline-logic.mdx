@@ -1,4 +1,4 @@
-# Inline prop logic
+# Inline logic
 
 In both Ember and React, inline prop logic is a way to dynamically calculate the value of a property or attribute based on some condition. This pattern simplifies code by avoiding separate conditional statements, instead embedding logic directly into the markup.
 
@@ -45,3 +45,7 @@ const TruthyIcon = (props) => {
 
 export default TruthyIcon;
 ```
+
+## Further note 
+
+- Please always use ternaries rather than short-circuiting rendering https://kentcdodds.com/blog/use-ternaries-rather-than-and-and-in-jsx
