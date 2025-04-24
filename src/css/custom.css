@@ -14,6 +14,8 @@
   --ifm-color-primary-lighter: #9d78cd;
   --ifm-color-primary-lightest: #ab86d9;
   --docusaurus-highlighted-code-line-bg: rgba(145, 102, 204, 0.1);
+  /* fixes https://github.com/facebook/docusaurus/pull/11120 */
+  --ifm-color-emphasis-600: var(--ifm-color-emphasis-700);
 
   /* ensure that code is just as readable */
   --ifm-code-font-size: 100%;
