@@ -6,24 +6,28 @@
 ```js
 import Component from '@ember/component';
 import { task } from 'ember-concurrency';
-
+import { inject as service } from '@ember/service';
 import classic from 'ember-classic-decorator';
 
 @classic
 export default class IceCreamComponent extends Component {
+  @service store;
 
-@task
+  @task
   selectFlavor = function* (flavor) {
-      const ice = yield this.store.createRecord('ice-cream-flavoflav', {
+    const ice = yield this.store.createRecord('ice-cream-flavoflav', {
       flavorSlug: flavor.flavoflavSlug,
     });
     return ice;
-}
+  }
 }
 ```
 
 ```hbs
-<button onclick={{fn (perform this.selectFlavor) "minty chocolate chip"}}>We Want MINT
+<button
+  onclick={{fn (perform this.selectFlavor) "minty chocolate chip"}}
+>
+  We Want MINT
 </button>
 ```
 
@@ -32,39 +36,42 @@ export default class IceCreamComponent extends Component {
 ```js
 import Component from '@ember/component';
 import { task } from 'ember-concurrency';
-
+import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 import classic from 'ember-classic-decorator';
 
 @classic
 export default class IceCreamComponent extends Component {
+  @service store;
 
-@task
-selectFlavor = function* (flavor) {
+  @task
+  selectFlavor = function* (flavor) {
     const ice = yield this.store.createRecord('ice-cream-flavoflav', {
-    flavorSlug: flavor.flavoflavSlug,
-  });
-  return ice;
+      flavorSlug: flavor.flavoflavSlug,
+    });
+    return ice;
   }
-}
 
-@action
-performTaskSelectFlavor(flavor) {
-    return this.selectFlavor.perform(flavor)
+  @action
+  performTaskSelectFlavor(flavor) {
+    return this.selectFlavor.perform(flavor);
+  }
 }
 ```
 
 ```hbs
-<ReactIceCreamButton @performTaskSelectFlavor={this.performTaskSelectFlavor}>
+<ReactIceCreamButton 
+  @performTaskSelectFlavor={this.performTaskSelectFlavor}
+/>
 ```
 
 ```jsx
-export default function IceCreamComponent({
-performTaskSelectFlavor
-});
-{
+export default function ReactIceCreamButton({
+  performTaskSelectFlavor
+}) {
   return (
     <button onClick={() => performTaskSelectFlavor( "minty chocolate chip")}>
-        We Want MINT
+      We Want MINT
     </button>
   )
 };
