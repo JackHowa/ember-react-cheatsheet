@@ -1,0 +1,70 @@
+# Migrating Perform Task
+
+
+## Ember
+
+```js
+import Component from '@ember/component';
+import { task } from 'ember-concurrency';
+
+import classic from 'ember-classic-decorator';
+
+@classic
+export default class IceCreamComponent extends Component {
+
+@task
+  selectFlavor = function* (flavor) {
+      const ice = yield this.store.createRecord('ice-cream-flavoflav', {
+      flavorSlug: flavor.flavoflavSlug,
+    });
+    return ice;
+}
+}
+```
+
+```hbs
+<button onclick={{fn (perform this.selectFlavor) "minty chocolate chip"}}>We Want MINT
+</button>
+```
+
+## React
+
+```js
+import Component from '@ember/component';
+import { task } from 'ember-concurrency';
+
+import classic from 'ember-classic-decorator';
+
+@classic
+export default class IceCreamComponent extends Component {
+
+@task
+selectFlavor = function* (flavor) {
+    const ice = yield this.store.createRecord('ice-cream-flavoflav', {
+    flavorSlug: flavor.flavoflavSlug,
+  });
+  return ice;
+}
+}
+
+@action
+performTaskSelectFlavor(flavor) {
+    return this.selectFlavor.perform(flavor)
+}
+```
+
+```hbs
+<ReactIceCreamButton @performTaskSelectFlavor={this.performTaskSelectFlavor}>
+```
+
+```jsx
+export default function  IceCreamComponent({
+performTaskSelectFlavor
+})
+{return(
+    <button onClick={() => performTaskSelectFlavor( "minty chocolate chip")}>We Want MINT
+</button>
+
+) }
+```
+  
