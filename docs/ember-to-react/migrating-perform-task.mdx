@@ -1,9 +1,17 @@
-# Migrating Perform Task
+# ember-concurrency perform tasks
 
+[ember-concurrency](https://ember-concurrency.com/) is a popular Ember addon for managing asynchronous tasks using generator functions ("tasks") that can be performed, canceled, and tracked for state. In Ember, the `perform` helper is used in templates to invoke these tasks, making it simple to handle async actions like data fetching or user events with robust state management (e.g., isRunning, lastSuccessful).
+
+When migrating from Ember to React, there is no direct equivalent we've created for ember-concurrency tasks or the `perform` helper. Instead, async logic is typically handled via JavaScript async functions, React hooks (like `useState`, `useEffect`), or libraries such as [SWR](https://swr.vercel.app/). The migration involves:
+
+- Moving generator-based tasks to async functions or Promises.
+- Replacing the `perform` helper with explicit function calls (often as event handlers in JSX).
 
 ## Ember
 
-```js
+In Ember, asynchronous actions are managed using [ember-concurrency](https://ember-concurrency.com/) tasks. Tasks are generator functions decorated with `@task`, which provide built-in state (such as isRunning) and cancellation. The `perform` helper in templates allows you to trigger these tasks directly from user interactions, such as button clicks, while automatically handling task state and preventing race conditions.
+
+```js title="component.js" showLineNumbers
 import Component from '@ember/component';
 import { task } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
@@ -23,7 +31,7 @@ export default class IceCreamComponent extends Component {
 }
 ```
 
-```hbs
+```hbs title="template.hbs" showLineNumbers
 <button
   onclick={{fn (perform this.selectFlavor) "minty chocolate chip"}}
 >
@@ -33,7 +41,11 @@ export default class IceCreamComponent extends Component {
 
 ## React
 
-```js
+In React, asynchronous logic is typically handled using async functions, React hooks, or external libraries such as [SWR](https://swr.vercel.app/). You manually manage loading and error state. Then, you invoke async actions via event handlers (e.g., `onClick`). This allows flexibility but also requires more explicit state management than in Ember.
+
+By extracting the template logic, you can maintain the same functionality with backend logic in Ember.
+
+```js title="component.js" showLineNumbers
 import Component from '@ember/component';
 import { task } from 'ember-concurrency';
 import { action } from '@ember/object';
@@ -59,18 +71,18 @@ export default class IceCreamComponent extends Component {
 }
 ```
 
-```hbs
+```hbs title="template.hbs" showLineNumbers
 <ReactIceCreamButton 
   @performTaskSelectFlavor={{this.performTaskSelectFlavor}}
 />
 ```
 
-```jsx
+```jsx title="react-ice-cream-button/index.jsx" showLineNumbers
 export default function ReactIceCreamButton({
   performTaskSelectFlavor
 }) {
   return (
-    <button onClick={() => performTaskSelectFlavor("minty chocolate chip")}>
+    <button onClick={() => performTaskSelectFlavor("minty chocolate chip")}>`
       We Want MINT
     </button>
   )
