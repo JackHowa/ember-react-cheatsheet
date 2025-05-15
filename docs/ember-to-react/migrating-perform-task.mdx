@@ -11,7 +11,7 @@ When migrating from Ember to React, there is no direct equivalent we've created 
 
 In Ember, asynchronous actions are managed using [ember-concurrency](https://ember-concurrency.com/) tasks. Tasks are generator functions decorated with `@task`, which provide built-in state (such as isRunning) and cancellation. The `perform` helper in templates allows you to trigger these tasks directly from user interactions, such as button clicks, while automatically handling task state and preventing race conditions.
 
-```js title="component.js" showLineNumbers
+```js title="ice-cream/component.js" showLineNumbers
 import Component from '@ember/component';
 import { task } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
@@ -31,7 +31,7 @@ export default class IceCreamComponent extends Component {
 }
 ```
 
-```hbs title="template.hbs" showLineNumbers
+```hbs title="ice-cream/template.hbs" showLineNumbers
 <button
   onclick={{fn (perform this.selectFlavor) "minty chocolate chip"}}
 >
@@ -45,7 +45,7 @@ In React, asynchronous logic is typically handled using async functions, React h
 
 By extracting the template logic, you can maintain the same functionality with backend logic in Ember. In this example, we are using a React component inside of an Ember component for the on-click functionality by passing an action.
 
-```js title="component.js" showLineNumbers
+```js title="ice-cream/component.js" showLineNumbers
 import Component from '@ember/component';
 import { task } from 'ember-concurrency';
 import { action } from '@ember/object';
@@ -71,7 +71,7 @@ export default class IceCreamComponent extends Component {
 }
 ```
 
-```hbs title="template.hbs" showLineNumbers
+```hbs title="ice-cream/template.hbs" showLineNumbers
 <ReactIceCreamButton 
   @performTaskSelectFlavor={{this.performTaskSelectFlavor}}
 />
@@ -82,7 +82,7 @@ export default function ReactIceCreamButton({
   performTaskSelectFlavor
 }) {
   return (
-    <button onClick={() => performTaskSelectFlavor("minty chocolate chip")}>`
+    <button onClick={() => performTaskSelectFlavor("minty chocolate chip")}>
       We Want MINT
     </button>
   )
