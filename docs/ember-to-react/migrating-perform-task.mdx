@@ -44,7 +44,7 @@ selectFlavor = function* (flavor) {
     flavorSlug: flavor.flavoflavSlug,
   });
   return ice;
-}
+  }
 }
 
 @action
@@ -58,13 +58,15 @@ performTaskSelectFlavor(flavor) {
 ```
 
 ```jsx
-export default function  IceCreamComponent({
+export default function IceCreamComponent({
 performTaskSelectFlavor
-})
-{return(
-    <button onClick={() => performTaskSelectFlavor( "minty chocolate chip")}>We Want MINT
-</button>
-
-) }
+});
+{
+  return (
+    <button onClick={() => performTaskSelectFlavor( "minty chocolate chip")}>
+        We Want MINT
+    </button>
+  )
+};
 ```
   
