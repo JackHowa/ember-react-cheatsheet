@@ -18,8 +18,13 @@ In React, we're going to make img tags with alt text on them explicitly. Before,
 ```jsx showLineNumbers
 const IceCreamImages = () => (
 	<>
-		<img src="assets/ice-cream/ice-cream-cone.svg" alt="" />
-		<img src="assets/ice-cream/ice-cream-cone-sized.svg" alt="" height="20" width="20">
+		<img alt="" src="assets/ice-cream/ice-cream-cone.svg"  />
+		<img 
+			alt="" 
+			src="assets/ice-cream/ice-cream-cone-sized.svg" 
+			height="20" 
+			width="20"
+		/>
 	</>
 )
 ```
