@@ -1,0 +1,30 @@
+# ember-svg-jar
+
+ember-svg-jar lets developers manage their svgs with a package. There's a viewer and some customization allowed. For React, we're going to be using native img tags to reference svgs. 
+
+## Ember
+
+With the library, templates can pass in other props. These are translated to the svg tag. Furthermore, in Ember, these ids like ice-cream-cone can come from any path.
+
+```hbs title="/components/ice-cream/template.hbs" showLineNumbers
+{{svg-jar "ice-cream-cone"}}
+{{svg-jar "ice-cream-cone-sized" height="20px" width="20px"}}
+```
+
+## React 
+
+In React, we're going to make img tags with alt text on them explicitly. Before, there was no screen reader available info. Now, we will add alt text. If the image is purely decorative, with no needed info for a user, then an empty alt text with a string is best. 
+
+```jsx showLineNumbers
+const IceCreamImages = () => (
+	<>
+		<img src="assets/ice-cream/ice-cream-cone.svg" alt="" />
+		<img src="assets/ice-cream/ice-cream-cone-sized.svg" alt="" height="20" width="20">
+	</>
+)
+```
+
+## Further reading 
+
+- ember-svg-jar https://svgjar.web.app/
+- How to write accessible alt text https://supercooldesign.co.uk/blog/how-to-write-good-alt-text
