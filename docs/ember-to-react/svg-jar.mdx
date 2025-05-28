@@ -33,3 +33,7 @@ const IceCreamImages = () => (
 
 - ember-svg-jar https://svgjar.web.app/
 - How to write accessible alt text https://supercooldesign.co.uk/blog/how-to-write-good-alt-text
+
+
+## ⚙️ Performance Note
+In Ember, ember-svg-jar inlines SVGs, allowing for better styling and interactivity at the cost of larger DOM payloads. If SVGs need to be styled directly, please look at using an icon package like EDS Icons instead if you work at Expel. In React, using `<img>` tags leverages browser caching and results in smaller markup but sacrifices styling flexibility.
