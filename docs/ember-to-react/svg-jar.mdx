@@ -1,10 +1,10 @@
 # ember-svg-jar
 
-`ember-svg-jar` is an Ember addon that helps manage SVG assets efficiently. It includes features like an in-app viewer and support for SVG customization. For React, we’re using standard <img> tags to reference SVGs directly. 
+`ember-svg-jar` is an Ember addon that helps manage SVG assets efficiently. It includes features like an in-app viewer and support for SVG customization. For React, we’re using standard <img> tags to reference SVGs directly. While `ember-svg-jar` embeds and customizes SVGs inline in Ember templates, the React implementation relies on external references using standard HTML `<img>` tags. 
 
 ## Ember
 
-With the library, templates can pass in other props. These are translated to the svg tag. Furthermore, in Ember, these ids like ice-cream-cone can come from any path.
+With the library, templates can pass in other props. These props are passed directly to the `<svg>` tag. Furthermore, in Ember, these ids like ice-cream-cone can come from any path.
 
 ```hbs title="/components/ice-cream/template.hbs" showLineNumbers
 {{svg-jar "ice-cream-cone"}}
@@ -13,7 +13,7 @@ With the library, templates can pass in other props. These are translated to the
 
 ## React 
 
-In React, we're going to make img tags with alt text on them explicitly. Before, there was no screen reader available info. Now, we will add alt text. If the image is purely decorative, with no needed info for a user, then an empty alt text with a string is best. If no height and width provided, please make sure to match the existing look of the svg beforehand.
+In React, we're going to make img tags with alt text on them explicitly. Before, there was no screen reader available info. Now, we will add alt text. If the image is decorative and conveys no meaningful content, use an empty alt attribute (alt="") so screen readers will ignore it. If no height and width provided, please make sure to match the existing look of the svg beforehand.
 
 ```jsx showLineNumbers
 const IceCreamImages = () => (
