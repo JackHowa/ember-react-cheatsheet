@@ -117,12 +117,6 @@ const config = {
             type: "docSidebar",
             sidebarId: "tutorialSidebar",
             position: "left",
-            label: "Help",
-          },
-          {
-            type: "docSidebar",
-            sidebarId: "tutorialSidebar",
-            position: "left",
             label: "Examples",
             href: "/docs/category/examples",
           },
@@ -141,10 +135,6 @@ const config = {
           {
             title: "Docs",
             items: [
-              {
-                label: "Help",
-                to: "/docs/intro",
-              },
               {
                 label: "Examples",
                 href: "/docs/category/examples",
