@@ -62,8 +62,6 @@ export default {
 In React for accessibility best practices, we will be using CSS media queries. Then, for people who use screen readers and other assistive devices, we will be adding a screen reader hidden class. 
 
 ```jsx showLineNumbers title="app/components/media-query.js"
-import { Title } from 'expel-design-system';
-
 /**
  * MobileConditionalTitle Component
  *
@@ -85,7 +83,7 @@ export default function MobileConditionalTitle({ titleText }) {
 }
 ```
 
-```scss title="app/components/media-query.scss" showLineNumbers
+```scss title="app/components/media-query.css" showLineNumbers
 // Only display content to screen readers
 //
 // See: https://www.a11yproject.com/posts/2013-01-11-how-to-hide-content/
@@ -106,6 +104,39 @@ export default function MobileConditionalTitle({ titleText }) {
   .hidden-on-desktop {
     @include sr-only();
   }
+}
+```
+
+In addition, if conditional rendering is needed, a custom React hook can be used. 
+
+```js title="app/hooks/use-media-query.js" showLineNumbers
+import { useState, useEffect } from 'react';
+
+export default function useMediaQuery(query) {
+  const [matches, setMatches] = useState(window.matchMedia(query).matches);
+
+  useEffect(() => {
+    const matcher = window.matchMedia(query);
+    const handler = () => setMatches(matcher.matches);
+    matcher.addEventListener('change', handler);
+    return () => matcher.removeEventListener('change', handler);
+  }, [query]);
+
+  return matches;
+}
+```
+
+```jsx title="app/components/mobile-conditional-title.jsx" showLineNumbers
+import { useMediaQuery } from '../hooks/use-media-query';
+
+export default function MobileConditionalTitle({ titleText }) {
+  const isMobile = useMediaQuery('(max-width: 813px)');
+
+  return (
+    <h2 className={isMobile ? 'crazy-mobile-layout' : ''}>
+      {titleText}
+    </h2>
+  );
 }
 ```
 
