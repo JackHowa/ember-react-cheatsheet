@@ -1,0 +1,115 @@
+# Media query
+
+On web apps, the screen size and orientation can be detected using media queries. There's a whole host of media queries available (see [docs](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)). In Ember, there's a pattern of using a helper to do media queries. Helpers are functions that can be used in templates in Ember. However, in React, we want to use web standards of CSS or SCSS media queries. Using JavaScript to handle media queries can result in buggy behavior.
+
+## Ember
+
+```hbs showLineNumbers title="template.hbs"
+{{#if (media "isMobile")}}
+  <h2>
+    As a mobile user, you will see this message.
+  </h2>
+{{/if}}
+```
+
+```js title="app/helpers/media.js" showLineNumbers
+import Helper from '@ember/component/helper';
+import { inject as service } from '@ember/service';
+
+export default class Media extends Helper {
+  @service media;
+
+  compute([breakpoint]) {
+    return this.media[breakpoint];
+  }
+}
+```
+
+```js title="app/services/media.js" showLineNumbers
+import Service from '@ember/service';
+import { defineProperty, computed } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+import { classify } from '@ember/string';
+import breakpoints from 'silly-app/breakpoints';
+
+export default class Media extends Service {
+  constructor() {
+    super(...arguments);
+
+    // create getters and listeners for each breakpoint
+    Object.entries(breakpoints).forEach(([name, query]) => {
+      defineProperty(this, name, tracked());
+      defineProperty(
+        this, 
+        `is${classify(name)}`, // listens for isMobile
+        computed(name, function () {
+          return this[name];
+        })
+      );
+    });
+  }
+}
+```
+
+```js title="app/breakpoints.js" showLineNumbers
+export default {
+  mobile: '(max-width: 813px)'
+};
+```
+
+## React
+
+In React for accessibility best practices, we will be using CSS media queries. Then, for people who use screen readers and other assistive devices, we will be adding a screen reader hidden class. 
+
+```jsx showLineNumbers title="app/components/media-query.js"
+import { Title } from 'expel-design-system';
+
+/**
+ * MobileConditionalTitle Component
+ *
+ * A responsive title component that only displays on mobile devices.
+ * This component leverages the 'hidden-on-desktop' class to conditionally
+ * visually show the title on mobile devices while visually hiding it on desktop views.
+ *
+ * @param {Object} props - Component props
+ * @param {string} props.titleText - The text content to display as the title
+ * @returns {JSX.Element} A Title component from the Expel Design System
+ *                        configured to be visible only on mobile devices
+ */
+export default function MobileConditionalTitle({ titleText }) {
+  return (
+    <h2 className="hidden-on-desktop">
+      {titleText}
+    </h2>
+  );
+}
+```
+
+```scss title="app/components/media-query.css" showLineNumbers
+// Only display content to screen readers
+//
+// See: https://www.a11yproject.com/posts/2013-01-11-how-to-hide-content/
+// See: https://kittygiraudel.com/2016/10/13/css-hide-and-seek/
+@mixin sr-only() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px; // Fix for https://github.com/twbs/bootstrap/issues/25686
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (width >= 813px) {
+  .hidden-on-desktop {
+    @include sr-only();
+  }
+}
+```
+
+## Further reading
+
+- More info on Ember helpers https://guides.emberjs.com/release/components/helper-functions/
+- More info on screen reader hidden content https://www.a11yproject.com/posts/2013-01-11-how-to-hide-content/
