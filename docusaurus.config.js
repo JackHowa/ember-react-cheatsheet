@@ -73,6 +73,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [{ name: "theme-color", content: "#815bb5" }],
       algolia: {
         // The application ID provided by Algolia
         appId: "BU87XCRIDV",

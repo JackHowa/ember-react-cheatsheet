@@ -61,3 +61,8 @@
 code {
   font-size: var(--ifm-code-font-size) !important;
 }
+
+/* Improve footer links clickability of minimum height of 48px of 16px * 3 = 48px */
+.footer__link-item {
+  line-height: 3;
+}
