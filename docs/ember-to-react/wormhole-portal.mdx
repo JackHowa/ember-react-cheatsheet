@@ -1,0 +1,75 @@
+# Wormhole/Portal
+
+Both frameworks allow rendering content outside the normal component tree hierarchy while maintaining logical parent-child relationships. This "portal" pattern is used for modals, tooltips, and dropdowns that need to get out of their container's styling constraints. This is useful for avoiding overflow issues with modals and their parent dom nodes.
+
+In Ember, use the built-in `{{in-element}}` helper (v3.20+) or the `ember-wormhole` addon for older versions. React provides `createPortal()` as a core API. 
+
+## Ember
+
+**Modern approach (v3.20+)** - Built-in `{{in-element}}` helper:
+
+```hbs showLineNumbers
+{{#in-element this.destinationElement}}
+  <div>Hello cheatsheet!</div>
+{{/in-element}}
+```
+
+```javascript
+// Component class
+export default class MyComponent extends Component {
+  destinationElement = document.getElementById('modal-root');
+}
+```
+
+**Legacy approach** - `ember-wormhole` addon:
+
+```hbs showLineNumbers
+{{#ember-wormhole to="destination"}}
+  Hello cheatsheet!
+{{/ember-wormhole}}
+```
+
+## React
+
+**Basic usage** - `createPortal()` from react-dom:
+
+```jsx showLineNumbers
+import { createPortal } from 'react-dom';
+
+function PortalHello() {
+  return createPortal(
+    <div>Hello cheatsheet!</div>,
+    document.getElementById('destination')
+  );
+}
+```
+
+**Modal example** with conditional rendering:
+
+```jsx showLineNumbers
+function Modal({ isOpen, onClose, children }) {
+  if (!isOpen) return null;
+  
+  return createPortal(
+    <div className="modal-backdrop" onClick={onClose}>
+      <div className="modal-content" onClick={e => e.stopPropagation()}>
+        {children}
+      </div>
+    </div>,
+    document.body
+  );
+}
+```
+
+### Further notes 
+
+**Key differences:**
+- **Ember `{{in-element}}`**: Replaces destination content by default (use `insertBefore=null` to append)
+- **React `createPortal()`**: Always appends to destination, maintains React event bubbling
+- **Event handling**: Both preserve parent-child event relationships despite DOM separation
+
+**Alternatives:**
+- Ember: [ember-elsewhere](https://github.com/ef4/ember-elsewhere) addon
+- React: Built-in, no alternatives needed
+
+**Common use cases:** Modals, tooltips, dropdowns, toast notifications
