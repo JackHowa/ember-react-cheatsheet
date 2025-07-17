@@ -1,6 +1,6 @@
 # Wormhole/Portal
 
-Both frameworks allow rendering content outside the normal component tree hierarchy while maintaining logical parent-child relationships. This "portal" pattern is used for modals, tooltips, and dropdowns that need to get out of their container's styling constraints. This is useful for avoiding overflow issues with modals and their parent dom nodes.
+Both Ember.js and React allow rendering content outside the normal component tree hierarchy. This "portal" pattern is used for modals, tooltips, and dropdowns that need to get out of their container's styling constraints. The pattern is useful for avoiding overflow issues with modals and their parent dom nodes.
 
 In Ember, use the built-in `{{in-element}}` [helper](https://dev.to/shayanypn/ember-js-in-element-feature-273l) (v3.20+) or the `ember-wormhole` addon for older versions ([doc](https://yapplabs.github.io/ember-wormhole/)). React provides `createPortal()` as a core API ([doc](https://react.dev/reference/react-dom/createPortal)).
 
@@ -63,11 +63,4 @@ function Modal({ isOpen, onClose, children }) {
 
 ### Further notes 
 
-**Key differences:**
-- **Ember `{{in-element}}`**: Replaces destination content by default (use `insertBefore=null` to append)
-- **React `createPortal()`**: Always appends to destination, maintains React event bubbling
-- **Event handling**: Both preserve parent-child event relationships despite DOM separation
-
-**Alternatives:**
-- Ember: [ember-elsewhere](https://github.com/ef4/ember-elsewhere) addon
-- React: Built-in, no alternatives needed
+- Ember [ember-elsewhere](https://github.com/ef4/ember-elsewhere) addon is an alternative to `{{in-element}}` and `ember-wormhole`
