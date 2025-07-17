@@ -17,14 +17,14 @@ In Ember, use the built-in `{{in-element}}` [helper](https://dev.to/shayanypn/em
 ```javascript
 // Component class
 export default class MyComponent extends Component {
-  destinationElement = document.getElementById('modal-root');
+  destinationElement = document.getElementById('modal-root'); // destination would be an id here of modal
 }
 ```
 
 **Legacy approach** - `ember-wormhole` addon:
 
 ```hbs showLineNumbers
-{{#ember-wormhole to="destination"}}
+{{#ember-wormhole to="modal-root"}}
   Hello cheatsheet!
 {{/ember-wormhole}}
 ```
@@ -39,7 +39,7 @@ import { createPortal } from 'react-dom';
 function PortalHello() {
   return createPortal(
     <div>Hello cheatsheet!</div>,
-    document.getElementById('destination')
+    document.getElementById('modal-root') // destination would be an id here
   );
 }
 ```
@@ -56,7 +56,7 @@ function Modal({ isOpen, onClose, children }) {
         {children}
       </div>
     </div>,
-    document.body
+    document.body // adds destination of the body of the whole document
   );
 }
 ```
