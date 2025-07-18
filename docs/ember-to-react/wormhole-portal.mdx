@@ -1,0 +1,66 @@
+# Wormhole/Portal
+
+Both Ember.js and React allow rendering content outside the normal component tree hierarchy. This "portal" pattern is used for modals, tooltips, and dropdowns that need to get out of their container's styling constraints. The pattern is useful for avoiding overflow issues with modals and their parent dom nodes.
+
+In Ember, use the built-in `{{in-element}}` [helper](https://dev.to/shayanypn/ember-js-in-element-feature-273l) (v3.20+) or the `ember-wormhole` addon for older versions ([doc](https://yapplabs.github.io/ember-wormhole/)). React provides `createPortal()` as a core API ([doc](https://react.dev/reference/react-dom/createPortal)).
+
+## Ember
+
+**Modern approach (v3.20+)** - Built-in `{{in-element}}` helper:
+
+```hbs showLineNumbers
+{{#in-element this.destinationElement}}
+  <div>Hello cheatsheet!</div>
+{{/in-element}}
+```
+
+```javascript
+// Component class
+export default class MyComponent extends Component {
+  destinationElement = document.getElementById('modal-root'); // destination would be an id here of modal
+}
+```
+
+**Legacy approach** - `ember-wormhole` addon:
+
+```hbs showLineNumbers
+{{#ember-wormhole to="modal-root"}}
+  Hello cheatsheet!
+{{/ember-wormhole}}
+```
+
+## React
+
+**Basic usage** - `createPortal()` from react-dom:
+
+```jsx showLineNumbers
+import { createPortal } from 'react-dom';
+
+function PortalHello() {
+  return createPortal(
+    <div>Hello cheatsheet!</div>,
+    document.getElementById('modal-root') // destination would be an id here
+  );
+}
+```
+
+**Modal example** with conditional rendering:
+
+```jsx showLineNumbers
+function Modal({ isOpen, onClose, children }) {
+  if (!isOpen) return null;
+  
+  return createPortal(
+    <div className="modal-backdrop" onClick={onClose}>
+      <div className="modal-content" onClick={e => e.stopPropagation()}>
+        {children}
+      </div>
+    </div>,
+    document.body // adds destination of the body of the whole document
+  );
+}
+```
+
+### Further notes 
+
+- Ember [ember-elsewhere](https://github.com/ef4/ember-elsewhere) addon is an alternative to `{{in-element}}` and `ember-wormhole`
