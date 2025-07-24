@@ -1,0 +1,56 @@
+# Lifecycle Methods
+
+Lifecycle methods run at different points of time for rendering components. In Ember, modifiers are often used in Glimmer. In React, `useEffect` and other hooks are used to handle state and run side effects.
+
+## Ember 
+
+```hbs title="template.hbs"
+<div {{did-insert this.initComponent}}>
+  {{this.loadingState}}
+</div>
+```
+
+```js title="component.js" showLineNumbers
+import { tracked } from '@glimmer/tracking';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
+
+export default class LoadingIndicator extends Component {
+  @tracked loadingState = 'Loading...';
+
+  @action
+  initComponent() {
+		// can add a delay just to see it happen: 
+		setTimeout(() => {
+      this.loadingState = 'Component initialized';
+    }, 2000);
+  }
+}
+```
+
+## React 
+
+```jsx title="component.js" showLineNumbers
+import { useEffect, useState } from 'react';
+
+export default function LoadingIndicator() {
+  const [loadingState, setLoadingState] = useState('Loading...');
+
+  // only after first render
+  // don't want to keep on initializing so empty array
+  useEffect(() => {
+    initComponent();
+  }, []);
+
+  function initComponent() {
+    setTimeout(() => {
+      setLoadingState('Component initialized');
+    }, 2000);
+  }
+
+  return <div>{loadingState}</div>;
+}
+```
+
+## Further notes
+
