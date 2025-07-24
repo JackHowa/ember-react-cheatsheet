@@ -16,14 +16,14 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
 export default class LoadingIndicator extends Component {
-	// loading is the initial state
+  // loading is the initial state
   @tracked loadingState = 'Loading...';
 
-	// action is needed to respond to the didInsert modifier
+  // action is needed to respond to the didInsert modifier
   @action
   initComponent() {
-		// can add a delay just to see it happen: 
-		setTimeout(() => {
+    // can add a delay just to see it happen: 
+    setTimeout(() => {
       this.loadingState = 'Component initialized';
     }, 2000); // 2 seconds
   }
