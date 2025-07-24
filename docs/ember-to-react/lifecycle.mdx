@@ -45,6 +45,7 @@ The key differences:
 - State updates use setter functions (`setLoadingState`) instead of direct assignment
 
 ```jsx title="component.js" live
+// update code to see this re-run
 // automatically included but you'll have to import them to use them
 // import { useEffect, useState } from 'react';
 
@@ -58,13 +59,11 @@ function LoadingIndicator() {
     }, 2000); // 2 seconds
   }
 
-
   // only after first render
   // don't want to keep on initializing so empty array
   useEffect(() => {
     initComponent();
   }, []);
-
 
   return <div>{loadingState}</div>;
 }
