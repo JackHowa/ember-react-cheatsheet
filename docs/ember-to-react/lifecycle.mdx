@@ -1,6 +1,6 @@
 # Lifecycle Methods
 
-Lifecycle methods run at different points of time for rendering components. In Ember, modifiers are often used in Glimmer. In React, `useEffect` and other hooks are used to handle state and run side effects.
+Lifecycle methods run at different points of time for rendering components. In Ember, modifiers are often used in Glimmer ([doc](https://github.com/emberjs/ember-render-modifiers)). In React, `useEffect` and other hooks are used to handle state and run side effects ([doc](https://react.dev/learn/synchronizing-with-effects)).
 
 ## Ember 
 
@@ -16,14 +16,16 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
 export default class LoadingIndicator extends Component {
+	// loading is the initial state
   @tracked loadingState = 'Loading...';
 
+	// action is needed to respond to the didInsert modifier
   @action
   initComponent() {
 		// can add a delay just to see it happen: 
 		setTimeout(() => {
       this.loadingState = 'Component initialized';
-    }, 2000);
+    }, 2000); // 2 seconds
   }
 }
 ```
@@ -34,7 +36,15 @@ export default class LoadingIndicator extends Component {
 import { useEffect, useState } from 'react';
 
 export default function LoadingIndicator() {
+	// loading is the initial state
   const [loadingState, setLoadingState] = useState('Loading...');
+
+	function initComponent() {
+    setTimeout(() => {
+      setLoadingState('Component initialized');
+    }, 2000); // 2 seconds
+  }
+
 
   // only after first render
   // don't want to keep on initializing so empty array
@@ -42,11 +52,6 @@ export default function LoadingIndicator() {
     initComponent();
   }, []);
 
-  function initComponent() {
-    setTimeout(() => {
-      setLoadingState('Component initialized');
-    }, 2000);
-  }
 
   return <div>{loadingState}</div>;
 }
@@ -54,3 +59,9 @@ export default function LoadingIndicator() {
 
 ## Further notes
 
+- Larger explanation on Ember lifecycle https://guides.emberjs.com/v3.3.0/getting-started/core-concepts/
+- Ember Component lifecycle https://guides.emberjs.com/v3.4.0/components/the-component-lifecycle/
+- Visual difference in Ember for lifecycle with Glimmer and before https://github.com/yankeeinlondon/ember-lifecycle-hooks
+- Explanation of Ember.js overall https://www.smashingmagazine.com/2013/11/an-in-depth-introduction-to-ember-js/
+- Explanation of React hooks https://github.com/Wavez/react-hooks-lifecycle
+- Other React lifecycle hooks https://react.dev/reference/react/hooks
