@@ -4,6 +4,10 @@ Lifecycle methods run at different points of time for rendering components. In E
 
 ## Ember 
 
+In Ember, we use the `{{did-insert}}` modifier to run code when the component is first inserted into the DOM. 
+
+The `@tracked` decorator makes the property reactive, and the `@action` decorator is required for methods that will be called from templates or modifiers.
+
 ```hbs title="template.hbs"
 <div {{did-insert this.initComponent}}>
   {{this.loadingState}}
@@ -31,6 +35,14 @@ export default class LoadingIndicator extends Component {
 ```
 
 ## React 
+
+In React, we use `useState` to manage component state and `useEffect` to handle side effects. The empty dependency array `[]` ensures the effect only runs once after the initial render, equivalent to Ember's `{{did-insert}}`.
+
+The key differences:
+- `useState` replaces `@tracked` properties for reactive state
+- `useEffect` with empty dependencies `[]` replaces `{{did-insert}}` modifier
+- No need for `@action` decorator - regular functions work fine
+- State updates use setter functions (`setLoadingState`) instead of direct assignment
 
 ```jsx title="component.js" live
 // automatically included but you'll have to import them to use them
