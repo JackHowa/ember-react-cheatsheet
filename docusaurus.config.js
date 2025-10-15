@@ -122,6 +122,13 @@ const config = {
             href: "/docs/category/examples",
           },
           {
+            type: "docSidebar",
+            sidebarId: "tutorialSidebar",
+            position: "left",
+            label: "React Best Practices",
+            href: "/docs/category/react-best-practices",
+          },
+          {
             href: "https://github.com/JackHowa/ember-react-cheatsheet",
             label: "GitHub",
             position: "right",
