@@ -1,0 +1,15 @@
+# Playbook
+
+For a sustainable and less tedious automated migration, here are a few general tips to follow:
+
+## Rules
+
+- Do not do manual tasks like formatting strings. For example, use functions to camelCase, kebab-case, snake_case, etc. If you do an action like this once, it may feel like progress. But doing manual string manipulation weekly is not a sustainable practice and is subject to typos. 
+- Do not do manual searches, like in VS Code or GitHub.com. Use Abstract Syntax Trees that understand code context (e.g., code comments) to find code via running a script. Typing into VS Code or GitHub.com is subject to typos, similarly. Also, the search is dependent upon their systems for finding code, including any API issues or local settings (e.g., ignoring file types). 
+- Do not run scripts via node or bash directly. Instead run via npm commands. `npm run migrate` takes less time to type than `node ./path-to-script/really-long-folder-name/really-long-file-name.js`. Plus, npm commands can use [lifecycle scripts](https://docs.npmjs.com/cli/v8/using-npm/scripts#life-cycle-scripts) like `postmigrate` scripts like Prettier to run after the migration. Running scripts this way is more powerful and repeatedable.
+- Do look for unused code first and remove it. For Ember, you can use my fork of [ember-unused-components](https://github.com/JackHowa/ember-unused-components) to find unused components and addons. 
+- Do not rely upon git for lines of code migrated. Use AST-aware tools to count lines of actual code migrated, like [scc](https://github.com/boyter/scc). git can also be inaccurate if parent lines of code are deleted or added, affecting child ones. Run checks on a regular basis to see progress in a repeatable, quick way. 
+- Do not feel pressured to go in and review every single PR on your team checking for compliance to migration rules. Use [Danger.js](https://danger.systems/js/) or GitHub Actions to automatically check for compliance to rules. (This can also report to Slack for company-wide visibility.)
+- Do use IDE-wide prompts like repo-level [Windsurf rules](https://windsurf.com/editor/directory) to enable compliance to migration rules.
+- Do use example files or example folders. Do not test on the whole codebase or group of targets. Look for and isolate problems and fix them. This minimizes the time spent watching your metaprogramming run. This is for your sanity but also for quick iteration and reproducibility. Having difficult migrations as well as easier ones works a little bit like testing. Putting these test files in your codemods folder can be useful along with the expected output in a similar file. There isn't a metaprogramming test framework that I know of...
+- Do use AST Explorer ([demo](https://astexplorer.net/)) to test your metaprogramming and learn about Abstract Syntax Trees. (Shoutout Kent C. Dodds for showing this in a [Frontend Masters course](https://frontendmasters.com/courses/linting-asts/).)
