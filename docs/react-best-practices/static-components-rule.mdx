@@ -1,0 +1,60 @@
+# Static Components Rule
+
+If you encounter the `static-components` Eslint rule provided by React Compiler 1.0, please look at this before and after of the fix. State will reset in the child component in the parent component's render cycle when you update the parent component. This will lead to bugs and performance issues.
+
+Please see the [React docs](https://react.dev/reference/eslint-plugin-react-hooks/lints/static-components) for more information. The interactive code snippets below are based on the provided examples.
+
+## Before 
+
+```jsx live 
+// ❌ Component defined inside component
+function Parent() {
+  const [parentCount, updateParentCount] = useState(0)
+
+  const ChildComponent = () => { // New component created every render!
+    const [count, setCount] = useState(0);
+    return <button onClick={() => setCount(count + 1)}>{count} child</button>;
+  };
+
+  return (
+		<>
+			<ol>
+				<li>Click the child button to update the child count.</li>
+				<li>Then click the parent button to update the parent count.</li>
+				<li>The child count will <b>wrongly</b> reset every time the parent updates.</li>
+			</ol>
+			<button onClick={() => updateParentCount(parentCount + 1)}>{parentCount} parent</button>
+			<div style={{padding: '1rem'}}><ChildComponent /></div>  
+	</>
+	)
+}
+```
+
+## After 
+
+```jsx live noInline
+// ✅ Components at module level
+const ChildComponent = () => { // No new component every render!
+	const [count, setCount] = useState(0);
+	return <button onClick={() => setCount(count + 1)}>{count} child</button>;
+};
+  
+function Parent() {
+  const [parentCount, updateParentCount] = useState(0)
+
+  return (
+		<>
+			<ol>
+				<li>Click the child button to update the child count.</li>
+				<li>Then click the parent button to update the parent count.</li>
+				<li>The child count will <b>correctly</b> be maintained across updating the parent.</li>
+			</ol>
+			<button onClick={() => updateParentCount(parentCount + 1)}>{parentCount} parent</button>
+			<div style={{padding: '1rem'}}><ChildComponent /></div>  
+		</>
+	)
+}
+
+render(<Parent />)
+```
+
