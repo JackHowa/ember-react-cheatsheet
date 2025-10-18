@@ -24,7 +24,6 @@ const config = {
   trailingSlash: false,
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -69,11 +68,15 @@ const config = {
       }),
     ],
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       metadata: [{ name: "theme-color", content: "#815bb5" }],
+      markdown: {
+        hooks: {
+          onBrokenMarkdownLinks: "warn",
+        },
+      },
       algolia: {
         // The application ID provided by Algolia
         appId: "BU87XCRIDV",
