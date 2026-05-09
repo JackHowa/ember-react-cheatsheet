@@ -6,11 +6,11 @@ In React when exporting a component, we must use default exports vs named export
 
 In ember we already use default exports:
 ```js title="component.js" showLineNumbers
-export default class OrganizationSelector extends Component {}
+export default class FlavorSelector extends Component {}
 ```
 
 ```hbs title="template.hbs"  showLineNumbers
- <OrganizationSelector />
+ <FlavorSelector />
 ```
 
 ## React
@@ -19,22 +19,22 @@ This means doing something like this when importing/exporting:
 
 Import:
 ```jsx 
-import OrganizationSelector from './organization-selector';
+import FlavorSelector from './flavor-selector';
 ```
 
 Export:
 ```jsx 
-export default OrganizationSelector;
+export default FlavorSelector;
 ```
 
 **Do not do the below**:
 
 Import:
 ```jsx 
-import { OrganizationSelector } from './organization-selector';
+import { FlavorSelector } from './flavor-selector';
 ```
 
 Export:
 ```jsx 
-export { OrganizationSelector };
+export { FlavorSelector };
 ```
