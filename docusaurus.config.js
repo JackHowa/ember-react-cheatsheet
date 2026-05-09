@@ -24,7 +24,6 @@ const config = {
   trailingSlash: false,
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -69,11 +68,20 @@ const config = {
       }),
     ],
   ],
+  future: {
+    faster: true,
+    v4: true,
+  },
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       metadata: [{ name: "theme-color", content: "#815bb5" }],
+      markdown: {
+        hooks: {
+          onBrokenMarkdownLinks: "warn",
+        },
+      },
       algolia: {
         // The application ID provided by Algolia
         appId: "BU87XCRIDV",
@@ -120,6 +128,13 @@ const config = {
             position: "left",
             label: "Examples",
             href: "/docs/category/examples",
+          },
+          {
+            type: "docSidebar",
+            sidebarId: "tutorialSidebar",
+            position: "left",
+            label: "React Best Practices",
+            href: "/docs/category/react-best-practices",
           },
           {
             type: "docSidebar",

@@ -17,7 +17,7 @@ const FeatureList = [
     Svg: require('@site/static/img/undraw_react.svg').default,
     description: (
       <>
-        Seeing common usages of React can help learn rather than knowing the thoery alone.
+        Seeing common usages of React can help learn rather than knowing the theory alone.
       </>
     ),
   },
