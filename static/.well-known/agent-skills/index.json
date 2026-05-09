@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
+  "skills": [
+    {
+      "name": "hbs-to-jsx-migration",
+      "type": "claude-code",
+      "description": "Migrate Ember Handlebars templates (.hbs) to React JSX (.jsx) components. Covers bottom-up migration strategy, core template transformations, Ember helper reference, async tasks (ember-concurrency), lifecycle, portals, media queries, and import/export rules.",
+      "url": "https://raw.githubusercontent.com/JackHowa/ember-react-cheatsheet/main/.claude/skills/hbs-to-jsx-migration/skill.md",
+      "sha256": "c4051eb55dd27112a986210aecf1f26b59103f78048750569336231bc14b74e1"
+    }
+  ]
+}
