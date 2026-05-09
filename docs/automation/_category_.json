@@ -1,0 +1,8 @@
+{
+	"label": "AI and Automation",
+	"position": 4,
+	"link": {
+		"type": "generated-index",
+		"description": "Automate common Ember to React usecases"
+	}
+}

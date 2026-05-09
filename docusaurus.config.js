@@ -137,6 +137,13 @@ const config = {
             href: "/docs/category/react-best-practices",
           },
           {
+            type: "docSidebar",
+            sidebarId: "tutorialSidebar",
+            position: "left",
+            label: "AI and Automation",
+            href: "/docs/category/ai-and-automation",
+          },
+          {
             href: "https://github.com/JackHowa/ember-react-cheatsheet",
             label: "GitHub",
             position: "right",

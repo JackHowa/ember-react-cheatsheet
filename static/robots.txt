@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+
+# AI crawlers — this is open educational content, crawling welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Content usage preferences (contentsignals.org)
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+Sitemap: https://ember-to-react.netlify.app/sitemap.xml

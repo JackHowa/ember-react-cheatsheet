@@ -1,0 +1,29 @@
+# Playbook
+
+For a sustainable and less tedious automated migration, here are a few general tips to follow:
+
+:::tip Use the Claude Code skill
+This site publishes a **[`/hbs-to-jsx-migration` Claude Code skill](/docs/automation/hbs-to-jsx-skill)** that encodes all patterns from the Examples section into a single reusable prompt. Install it once and invoke it on any `.hbs` file to get a migration that follows all the rules below.
+:::
+
+## AI Playbook
+
+AI coding assistants can dramatically accelerate Ember-to-React migrations when used well. The key is giving them the right context and constraints.
+
+- Use a Claude Code skill to encode your migration patterns once and reuse them across every component. This repo publishes a [`/hbs-to-jsx-migration` skill](https://github.com/JackHowa/ember-react-cheatsheet/tree/main/.claude/skills/hbs-to-jsx-migration) you can copy into your own project's `.claude/skills/` folder and invoke with `/hbs-to-jsx-migration`.
+- Use repo-level rules (e.g., [Claude CLAUDE.md](https://docs.anthropic.com/en/docs/claude-code/memory), [Windsurf rules](https://windsurf.com/editor/directory), [Cursor rules](https://docs.cursor.com/context/rules-for-ai)) to enforce migration conventions — component naming, import style, testing approach — across every AI-assisted session without repeating yourself.
+- Always verify AI-generated migrations against the existing Ember template. AI can misread implicit Ember conventions (two-way binding, service injection, computed properties) that don't map directly to React.
+- Use AI to generate AST codemods (e.g., via [jscodeshift](https://github.com/facebook/jscodeshift)) for repetitive, mechanical transformations across the whole codebase rather than migrating file by file.
+- Give the AI one component at a time. Large context windows can cause hallucinated dependencies or incorrect assumptions about shared state. Smaller, focused prompts produce more accurate output.
+
+## Rules
+
+- Use functions to automate string manipulation like camelCase, kebab-case, snake_case, etc. Doing manual string manipulation weekly is not a sustainable practice and is subject to typos.
+- Use Abstract Syntax Trees that understand code context (e.g., code comments) to find code via running a script instead of manual searches in VS Code or GitHub.com. Typing into VS Code or GitHub.com is subject to typos and dependent upon their systems, including any API issues or local settings (e.g., ignoring file types).
+- Run scripts via npm commands rather than node or bash directly. `npm run migrate` takes less time to type than `node ./path-to-script/really-long-folder-name/really-long-file-name.js`. Plus, npm commands can use [lifecycle scripts](https://docs.npmjs.com/cli/v8/using-npm/scripts#life-cycle-scripts) like `postmigrate` scripts like Prettier to run after the migration. Running scripts this way is more powerful and repeatable.
+- Look for unused code first and remove it. For Ember, you can use my fork of [ember-unused-components](https://github.com/JackHowa/ember-unused-components) to find unused components and addons.
+- Use AST-aware tools to count lines of actual code migrated, like [scc](https://github.com/boyter/scc), rather than relying on git. git can be inaccurate if parent lines of code are deleted or added, affecting child ones. Run checks on a regular basis to see progress in a repeatable, quick way.
+- Use [Danger.js](https://danger.systems/js/) or GitHub Actions to automatically check for compliance to migration rules instead of manually reviewing every PR. (This can also report to Slack for company-wide visibility.)
+- Do use IDE-wide prompts like repo-level [Windsurf rules](https://windsurf.com/editor/directory) to enable compliance to migration rules.
+- Do use example files or example folders. Do not test on the whole codebase or group of targets. Look for and isolate problems and fix them. This minimizes the time spent watching your metaprogramming run. This is for your sanity but also for quick iteration and reproducibility. Having difficult migrations as well as easier ones works a little bit like testing. Putting these test files in your codemods folder can be useful along with the expected output in a similar file. There isn't a metaprogramming test framework that I know of...
+- Do use AST Explorer ([demo](https://astexplorer.net/)) to test your metaprogramming and learn about Abstract Syntax Trees. (Shoutout Kent C. Dodds for showing this in a [Frontend Masters course](https://frontendmasters.com/courses/linting-asts/).)

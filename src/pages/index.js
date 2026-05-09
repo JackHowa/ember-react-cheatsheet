@@ -23,6 +23,13 @@ function HomepageHeader() {
           >
             Browse example migrations 🔥 ➡️ ⚛️
           </Link>
+          <Link
+            className="button button--outline button--secondary button--lg"
+            to="/docs/automation/hbs-to-jsx-skill"
+            style={{marginLeft: '1rem'}}
+          >
+            Copy the Claude Code skill 🤖
+          </Link>
         </div>
       </div>
     </header>
