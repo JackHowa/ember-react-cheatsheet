@@ -20,4 +20,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.aiGradientButton {
+  background: linear-gradient(135deg, #ff6b6b, #ffa500, #ffe34d, #6bff72, #4dc8ff, #815bb5, #ff6b6b);
+  background-size: 200% 200%;
+  border: none;
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  animation: rainbowShift 4s linear infinite;
+  transition: opacity 0.2s ease;
+}
+
+.aiGradientButton:hover {
+  opacity: 0.88;
+  color: #fff !important;
+}
+
+@keyframes rainbowShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

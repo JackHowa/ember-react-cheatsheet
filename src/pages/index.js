@@ -24,9 +24,8 @@ function HomepageHeader() {
             Browse example migrations 🔥 ➡️ ⚛️
           </Link>
           <Link
-            className="button button--outline button--secondary button--lg"
+            className={clsx("button button--lg", styles.aiGradientButton)}
             to="/docs/automation/hbs-to-jsx-skill"
-            style={{marginLeft: '1rem'}}
           >
             Copy the Claude Code skill 🤖
           </Link>
