@@ -75,15 +75,15 @@ Next.js's App Router builds error boundaries into routing itself via a special `
 
 export default function Error({
   error,
-  reset,
+  retry,
 }: {
   error: Error & { digest?: string };
-  reset: () => void;
+  retry: () => void;
 }) {
   return (
     <div>
       <h2>Failed to load this article.</h2>
-      <button onClick={() => reset()}>Try again</button>
+      <button onClick={() => retry()}>Try again</button>
     </div>
   );
 }
@@ -91,9 +91,31 @@ export default function Error({
 
 Key differences from a hand-rolled React boundary:
 - `error.tsx` is scoped to its route segment automatically by file placement — no wrapping JSX required.
-- It receives a `reset` function to re-render the segment without a full page reload.
+- It receives a `retry` function to re-render the segment without a full page reload.
 - It does **not** catch errors thrown in the layout of the *same* segment — use a parent `error.tsx` or `global-error.tsx` for that.
-- `global-error.tsx` (at the app root) is the equivalent of a top-level boundary and must render its own `<html>`/`<body>`.
+- `global-error.tsx` (at the app root) is the equivalent of a top-level boundary, but with the same shape/props as `error.tsx`. It only fires when the root layout itself throws, and because it replaces the root layout, it must render its own `<html>`/`<body>` tags:
+
+```tsx title="app/global-error.tsx"
+'use client'; // Error boundaries must be Client Components
+
+export default function GlobalError({
+  error,
+  retry,
+}: {
+  error: Error & { digest?: string };
+  retry: () => void;
+}) {
+  return (
+    // global-error must include html and body tags
+    <html>
+      <body>
+        <h2>Something went wrong!</h2>
+        <button onClick={() => retry()}>Try again</button>
+      </body>
+    </html>
+  );
+}
+```
 
 ## Further notes
 
