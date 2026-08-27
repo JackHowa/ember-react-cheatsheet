@@ -1,0 +1,125 @@
+# Error Boundaries
+
+Ember and React handle rendering errors very differently. Ember has no built-in concept of an "error boundary" component — errors thrown during rendering typically bubble up and crash the app, or are handled ad-hoc with `try`/`catch` in computed properties, tasks, or route hooks. React has a dedicated component pattern, `ErrorBoundary`, that catches render-time errors in its child tree and displays a fallback UI instead of crashing the whole app.
+
+## Ember
+
+Ember doesn't have a component-level error boundary. The closest equivalents are:
+
+- `Route#error` (or the `error` route/template) to catch errors in a route's `model` hook
+- Wrapping risky synchronous code in `try`/`catch` inside actions, tasks, or computed properties
+- A global `Ember.onerror` handler for uncaught errors
+
+```js title="route.js" showLineNumbers
+import Route from '@ember/routing/route';
+
+export default class ArticleRoute extends Route {
+  async model(params) {
+    // errors thrown here are caught by the `error` substate/template
+    return this.store.findRecord('article', params.article_id);
+  }
+}
+```
+
+```hbs title="error.hbs"
+<h2>Something went wrong loading this article.</h2>
+```
+
+This only covers errors in `model`/route hooks — it does not catch errors thrown while rendering a component's template, which is the gap React error boundaries fill.
+
+## React
+
+In React, a class component that implements `static getDerivedStateFromError` and/or `componentDidCatch` becomes an error boundary. It catches errors thrown anywhere in its child component tree during rendering and renders a fallback instead. Error boundaries **must** be class components — there is no hook equivalent (`useErrorBoundary` doesn't exist as of React 19).
+
+```jsx title="ErrorBoundary.js" showLineNumbers
+class ErrorBoundary extends React.Component {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, info) {
+    // log to your error reporting service
+    console.error(error, info);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback ?? <h2>Something went wrong.</h2>;
+    }
+    return this.props.children;
+  }
+}
+```
+
+```jsx title="App.js"
+<ErrorBoundary fallback={<h2>Failed to load the article.</h2>}>
+  <Article />
+</ErrorBoundary>
+```
+
+### Best practices
+
+- Scope boundaries around individual widgets/sections (e.g. a sidebar, a card list) rather than one boundary around the whole app — an error in one section shouldn't blank the entire page.
+- Error boundaries do **not** catch errors in event handlers, async code (`setTimeout`, promises), server-side rendering, or errors thrown in the boundary itself — handle those with regular `try`/`catch`.
+- Prefer a small, shared library boundary (e.g. `react-error-boundary`'s `ErrorBoundary`/`useErrorBoundary`) over hand-rolling one per app, so reset/retry behavior is consistent.
+- Always log the caught error (`componentDidCatch`) to your monitoring tool — a swallowed error with only a fallback UI is hard to debug later.
+
+## Next.js: `error.tsx`
+
+Next.js's App Router builds error boundaries into routing itself via a special `error.tsx` file. Placing `error.tsx` next to a `page.tsx` automatically wraps that route segment (and its children) in a React error boundary — no manual class component needed.
+
+```tsx title="app/articles/[id]/error.tsx" showLineNumbers
+'use client'; // error.tsx must be a Client Component
+
+export default function Error({
+  error,
+  retry,
+}: {
+  error: Error & { digest?: string };
+  retry: () => void;
+}) {
+  return (
+    <div>
+      <h2>Failed to load this article.</h2>
+      <button onClick={() => retry()}>Try again</button>
+    </div>
+  );
+}
+```
+
+Key differences from a hand-rolled React boundary:
+- `error.tsx` is scoped to its route segment automatically by file placement — no wrapping JSX required.
+- It receives a `retry` function to re-render the segment without a full page reload.
+- It does **not** catch errors thrown in the layout of the *same* segment — use a parent `error.tsx` or `global-error.tsx` for that.
+- `global-error.tsx` (at the app root) is the equivalent of a top-level boundary, but with the same shape/props as `error.tsx`. It only fires when the root layout itself throws, and because it replaces the root layout, it must render its own `<html>`/`<body>` tags:
+
+```tsx title="app/global-error.tsx"
+'use client'; // Error boundaries must be Client Components
+
+export default function GlobalError({
+  error,
+  retry,
+}: {
+  error: Error & { digest?: string };
+  retry: () => void;
+}) {
+  return (
+    // global-error must include html and body tags
+    <html>
+      <body>
+        <h2>Something went wrong!</h2>
+        <button onClick={() => retry()}>Try again</button>
+      </body>
+    </html>
+  );
+}
+```
+
+## Further notes
+
+- React docs on error boundaries: https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary
+- `react-error-boundary` library: https://github.com/bvaughn/react-error-boundary
+- Next.js error handling docs: https://nextjs.org/docs/app/building-your-application/routing/error-handling
+- Ember route error substates: https://guides.emberjs.com/release/routing/loading-and-error-substates/
